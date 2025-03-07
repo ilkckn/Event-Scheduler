@@ -1,1 +1,60 @@
 @plugin "daisyui";
+
+.App {
+  font-family: "Poppins", sans-serif;
+}
+
+.login {
+  background-image: url(assets/images/Login-Register/background3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.register {
+  background-image: url(assets/images/Login-Register/background3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+input:-webkit-autofill {
+  background-color: #fce4ec !important;
+  color: #880e4f !important;
+}
+
+input:-webkit-autofill:focus {
+  background-color: #fce4ec !important;
+  color: #880e4f !important;
+}
+
+.tracking-out-expand-fwd {
+	animation: tracking-out-expand-fwd 4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+ @keyframes tracking-out-expand-fwd {
+  0% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    letter-spacing: 2em;
+    transform: translateZ(300px);
+    opacity: 0;
+    display: none;
+  }
+}
+
+
+
+
+
+
+
