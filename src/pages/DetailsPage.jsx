@@ -33,7 +33,7 @@ const DetailPage = () => {
           alt={selectedEntry.title}
         />
       </div>
-      <p className="text-justify m-3 text-[#4d3800]">{selectedEntry.description}</p>
+      <p className="text-justify m-3 text-[#4d3800]">{selectedEntry.content}</p>
     </div>
   );
 };
