@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { EventContext } from "../context/EventContext";
 import { Link } from "react-router-dom";  ////for link 
+import AddEntryModal from "./components/AddEntry";
+
 
 function Home() {
   console.log("Home component rendered");
@@ -17,6 +19,26 @@ function Home() {
 
   const handleCardClick = (eventId) => {
     navigate(`/event/${eventId}`);
+
+    //// new 
+    const [showModal, setShowModal] = useState(false);
+  const [entries, setEntries] = useState(
+    JSON.parse(localStorage.getItem("diaryEntries")) || []
+  );
+
+  const handleSave = (newEntry) => {
+    const updatedEntries = [...entries, newEntry];
+    setEntries(updatedEntries);
+    localStorage.setItem("diaryEntries", JSON.stringify(updatedEntries));
+  };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   };
 
   return (
@@ -33,6 +55,12 @@ function Home() {
         <p className="text-lg mt-4 text-red-500">No user logged in.</p>
       )}
 
+<button
+        className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto block"
+        onClick={handleOpenModal}
+      >
+        Add New Entry
+      </button>
       <div className="events-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
         {events.map((event) => (
           <div
