@@ -20,32 +20,26 @@ function SignIn() {
     <div className="register w-full h-[100vh] flex items-center justify-center p-4 relative">
       <form
         onSubmit={handleRegister}
-        className="form w-[35rem] h-[50rem] flex flex-col justify-center items-center p-4 bg-transparent border border-blue-600 rounded-[10px] backdrop-blur-2xl shadow-lg"
+        className="form w-[35rem] h-[55rem] flex flex-col justify-center items-center p-4 bg-transparent border border-blue-800 rounded-[10px] backdrop-blur-2xl shadow-2xl"
       >
-        <div className="login-logo">
+        <div className="register-logo mb-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1}
-            stroke="currentColor"
-            className="size-25 text-blue-300"
+            fill="currentColor"
+            className="size-23 text-white"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-            />
+            <path d="M5.25 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM2.25 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM18.75 7.5a.75.75 0 0 0-1.5 0v2.25H15a.75.75 0 0 0 0 1.5h2.25v2.25a.75.75 0 0 0 1.5 0v-2.25H21a.75.75 0 0 0 0-1.5h-2.25V7.5Z" />
           </svg>
         </div>
-        <h1 className="text-blue-300 text-[3rem] font-medium tracking-[1px] uppercase mb-[3rem]">
+        <h1 className="text-white text-[3rem] font-medium tracking-[1px] uppercase mb-[3rem]">
           Register
         </h1>
         <div className="register-info w-[80%] flex flex-col gap-4 relative">
           <div className="email w-full flex flex-col gap-[5px]">
             <label
               htmlFor="email"
-              className="text-blue-300 font-medium tracking-[.5px] pl-4"
+              className="text-white font-medium tracking-[.5px] pl-4"
             >
               Email:
             </label>
@@ -55,7 +49,7 @@ function SignIn() {
               onChange={handleChanges}
               placeholder="Enter your e-mail"
               id="email"
-              className="w-full h-[3rem] text-white font-extralight border border-blue-300 rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
+              className="w-full h-[3rem] text-white font-extralight border border-white rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
             />
             <div className="email-icon absolute top-[2.7rem] left-5">
               <svg
@@ -64,7 +58,7 @@ function SignIn() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-5 text-blue-300"
+                className="size-5 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -77,7 +71,7 @@ function SignIn() {
           <div className="name w-full flex flex-col gap-[5px]">
             <label
               htmlFor="name"
-              className="text-blue-300 font-medium tracking-[.5px] pl-4"
+              className="text-white font-medium tracking-[.5px] pl-4"
             >
               Name:
             </label>
@@ -87,16 +81,16 @@ function SignIn() {
               onChange={handleChanges}
               placeholder="Enter your e-mail"
               id="name"
-              className="w-full h-[3rem] text-white font-extralight border border-blue-300 rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
+              className="w-full h-[3rem] text-white font-extralight border border-white rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
             />
-            <div className="name-icon absolute top-[2.7rem] left-5">
+            <div className="name-icon absolute top-[8.5rem] left-5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-5 text-blue-300"
+                className="size-5 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -109,7 +103,7 @@ function SignIn() {
           <div className="password w-full flex flex-col gap-1">
             <label
               htmlFor="password"
-              className="text-blue-300 font-medium tracking-[.5px] pl-4"
+              className="text-white font-medium tracking-[.5px] pl-4"
             >
               Password:
             </label>
@@ -119,16 +113,16 @@ function SignIn() {
               onChange={handleChanges}
               placeholder="Enter your password"
               id="password"
-              className="w-full h-[3rem] text-white font-extralight border border-blue-300 rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
+              className="w-full h-[3rem] text-white font-extralight border border-white rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
             />
-            <div className="password-icon absolute top-[8.4rem] left-5">
-            <svg
+            <div className="confirm-password-icon absolute top-[14.2rem] left-5">
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-5 text-blue-300"
+                className="size-5 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -141,7 +135,7 @@ function SignIn() {
           <div className="confirm-password w-full flex flex-col gap-1">
             <label
               htmlFor="confirm-password"
-              className="text-blue-300 font-medium tracking-[.5px] pl-4"
+              className="text-white font-medium tracking-[.5px] pl-4"
             >
               Confirm Password:
             </label>
@@ -151,16 +145,16 @@ function SignIn() {
               onChange={handleConfirmPasswordChange}
               placeholder="Confirm your password"
               id="confirm-password"
-              className="w-full h-[3rem] text-white font-extralight border border-blue-300 rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
+              className="w-full h-[3rem] text-white font-extralight border border-white rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
             />
-            <div className="password-icon absolute top-[14.1rem] left-5">
-            <svg
+            <div className="confirm-password-icon absolute top-[20rem] left-5">
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-5 text-blue-300"
+                className="size-5 text-white"
               >
                 <path
                   strokeLinecap="round"
@@ -171,7 +165,7 @@ function SignIn() {
             </div>
           </div>
           <div className="btn w-full flex justify-center mt-[1rem]">
-            <button className="w-full text-white text-[1.5rem] uppercase tracking-[2px] bg-blue-300 border border-blue-300 rounded-[30px] px-[3rem] py-[.5rem] hover:bg-blue-300 hover:text-white transition-all duration-300 cursor-pointer">
+            <button className="w-full text-white text-[1.3rem] uppercase tracking-[2px] bg-blue-300 border border-white rounded-[30px] px-[3rem] py-[.4rem] hover:bg-white hover:text-blue-300 transition-all duration-500 cursor-pointer">
               Register
             </button>
           </div>
