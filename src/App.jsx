@@ -25,7 +25,7 @@ function App() {
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/home/:id/:name" element={<Home />} />
-            <Route path="/detail/:eventid" element={<DetailPage />} />    //DetailPage
+            <Route path="/event/:eventid" element={<DetailPage />} />    //DetailPage
           </Route>
           {/* Protected Routes End */}
           <Route path="*" element={<NotFound />} />

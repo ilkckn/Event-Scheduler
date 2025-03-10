@@ -8,10 +8,11 @@ function EventContextProvider({ children }) {
   const [user, setUser] = useState({
     email: "",
     password: "",
-    name:""
+    name: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [users, setUsers] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const userAPI = async () => {
@@ -28,6 +29,14 @@ function EventContextProvider({ children }) {
     userAPI();
   }, []);
 
+  useEffect(() => { 
+    const storedEvents = JSON.parse(localStorage.getItem("diaryEntries")) || [];
+    setEvents(storedEvents);    
+  }, []);
+
+
+
+
   const handleChanges = (e) => {
     setUser((prevUser) => ({
       ...prevUser,
@@ -42,7 +51,7 @@ function EventContextProvider({ children }) {
   const handleLogin = (e) => {
     e.preventDefault();
     const loggedInUser = users.find((data) => data.email === user.email);
-  
+
     if (loggedInUser) {
       console.log(loggedInUser);
       setUser(loggedInUser);
@@ -59,7 +68,6 @@ function EventContextProvider({ children }) {
       alert("Login failed! User not found."); 
     }
   };
-  
 
   const handleLogout = () => {
     setUser({});
@@ -111,7 +119,8 @@ function EventContextProvider({ children }) {
         setConfirmPassword,
         handleConfirmPasswordChange,
         user,
-        users
+        users,
+        events,
       }}
     >
       {children}
