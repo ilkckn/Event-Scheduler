@@ -75,14 +75,16 @@ function EventContextProvider({ children }) {
       console.log(loggedInUser);
       setUser(loggedInUser);
       localStorage.setItem("user", JSON.stringify(loggedInUser));
-
+  
       if (loggedInUser.id && loggedInUser.name) {
         navigate(`/home/${loggedInUser.id}/${loggedInUser.name}`);
       } else {
         console.error("Invalid user data: missing id or name");
+        alert("Invalid user data: missing id or name"); 
       }
     } else {
       console.log("Login failed!");
+      alert("Login failed! User not found."); 
     }
   };
 
