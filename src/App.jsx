@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/Login";
 import Home from "./pages/Home";
 import SignIn from "./components/SignIn";
+import DetailPage from "./pages/DetailsPage";
 import NotFound from "./components/NotFound";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/home/:id/:name" element={<Home />} />
+            <Route path="/event/:eventid" element={<DetailPage />} />    //DetailPage
           </Route>
           {/* Protected Routes End */}
           <Route path="*" element={<NotFound />} />
@@ -32,5 +34,5 @@ function App() {
     </EventContextProvider>
   );
 }
-
 export default App;
+

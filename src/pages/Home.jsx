@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { EventContext } from "../context/EventContext";
+import { Link } from "react-router-dom";  ////for link 
 
 function Home() {
   console.log("Home component rendered");
   const { handleLogout, events } = useContext(EventContext);
   const { id, name } = useParams();
+  const eventid ="1";   //// test value
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +22,9 @@ function Home() {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold text-center mt-10">Home</h1>
-
+      <div>
+                
+              </div>
       {id && name ? (
         <p className="text-lg mt-4">
           Welcome, <strong>{name}</strong>!
@@ -40,6 +44,7 @@ function Home() {
             <p className="text-gray-700">{event.description}</p>
           </div>
         ))}
+        
       </div>
 
       <button
@@ -48,7 +53,11 @@ function Home() {
       >
         Logout
       </button>
+      
+
+      
     </div>
+
   );
 }
 
