@@ -8,10 +8,17 @@ function EventContextProvider({ children }) {
   const [user, setUser] = useState({
     email: "",
     password: "",
-    name:""
+    name: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [users, setUsers] = useState([]);
+  /* const [events, setEvents] = useState([
+    { id: 1, title: "Event 1", description: "Description for Event 1" },
+    { id: 2, title: "Event 2", description: "Description for Event 2" },
+    { id: 3, title: "Event 3", description: "Description for Event 3" },
+  ]);
+  */
+ const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const userAPI = async () => {
@@ -28,6 +35,24 @@ function EventContextProvider({ children }) {
     userAPI();
   }, []);
 
+  useEffect( () => {
+    // Fetch events from an API or local storage
+    // const storedEvents = JSON.parse(localStorage.getItem("events")) || [];
+    async function fetchEvents() {
+      try {
+        const response = await fetch("http://localhost:3001/api/events");
+        if (!response.ok) {
+          throw new Error("Failed to fetch events");
+        }
+        const data = await response.json();
+        setEvents(data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+    fetchEvents();
+  }, []);
+
   const handleChanges = (e) => {
     setUser((prevUser) => ({
       ...prevUser,
@@ -42,7 +67,7 @@ function EventContextProvider({ children }) {
   const handleLogin = (e) => {
     e.preventDefault();
     const loggedInUser = users.find((data) => data.email === user.email);
-  
+
     if (loggedInUser) {
       console.log(loggedInUser);
       setUser(loggedInUser);
@@ -57,7 +82,6 @@ function EventContextProvider({ children }) {
       console.log("Login failed!");
     }
   };
-  
 
   const handleLogout = () => {
     setUser({});
@@ -109,7 +133,8 @@ function EventContextProvider({ children }) {
         setConfirmPassword,
         handleConfirmPasswordChange,
         user,
-        users
+        users,
+        events,
       }}
     >
       {children}
