@@ -95,7 +95,7 @@ const AddEntryModal = ({ close, onSave }) => {
         <textarea
           className="w-full p-2 border mb-2"
           rows="4"
-          placeholder="Your diary entry..."
+          placeholder="Your description ..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
