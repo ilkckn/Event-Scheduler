@@ -12,13 +12,7 @@ function EventContextProvider({ children }) {
   });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [users, setUsers] = useState([]);
-  const [events, setEvents] = useState([
-    { id: 1, title: "Event 1", description: "Description for Event 1" },
-    { id: 2, title: "Event 2", description: "Description for Event 2" },
-    { id: 3, title: "Event 3", description: "Description for Event 3" },
-  ]);
-
- // const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const userAPI = async () => {
@@ -35,26 +29,13 @@ function EventContextProvider({ children }) {
     userAPI();
   }, []);
 
-  /*
-  useEffect( () => {
-    // Fetch events from an API or local storage
-    // const storedEvents = JSON.parse(localStorage.getItem("events")) || [];
-    async function fetchEvents() {
-      try {
-        const response = await fetch("http://localhost:3001/api/events");
-        if (!response.ok) {
-          throw new Error("Failed to fetch events");
-        }
-        const data = await response.json();
-        setEvents(data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
-    fetchEvents();
+  useEffect(() => { 
+    const storedEvents = JSON.parse(localStorage.getItem("diaryEntries")) || [];
+    setEvents(storedEvents);    
   }, []);
 
-  */
+
+
 
   const handleChanges = (e) => {
     setUser((prevUser) => ({
