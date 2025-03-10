@@ -23,7 +23,7 @@ const DetailPage = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-     <Link to= {`/home/${id}/${name}`} className="text-blue-500 underline">Back to diary</Link>
+     <Link to= {`/home/${id}/${name}`} className="text-blue-500 underline">Back to Events</Link>
       <h2 className="text-center text-2xl font-bold text-[#886300]">{selectedEntry.title}</h2>
       <p className="text-sm text-[#4d3800]">{new Date(selectedEntry.date).toLocaleDateString()}</p>
       <div className="m-3">

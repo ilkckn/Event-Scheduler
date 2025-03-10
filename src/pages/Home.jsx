@@ -7,7 +7,7 @@ function Home() {
   console.log("Home component rendered");
   const { handleLogout } = useContext(EventContext);
   const { id, name } = useParams();
-  const eventid ="1";
+  const eventid ="1";   //// test value
   useEffect(() => {
     console.log("User ID:", id);
     console.log("User Name:", name);
