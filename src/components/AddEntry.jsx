@@ -11,7 +11,6 @@ const saveEntry = (entry) => {
   entries.push(entry);
   localStorage.setItem("diaryEntries", JSON.stringify(entries)) || [];
 };
-
 const AddEntryModal = ({ close, onSave }) => {
   const [id, setId] = useState("");
   const [title, setTitle] = useState("");
@@ -40,8 +39,8 @@ const AddEntryModal = ({ close, onSave }) => {
 
     // Prevent duplicate IDs
     const existingEntries = getEntries();
-    if (existingEntries.some((entry) => entry.date === date)) {
-      alert("A diary with this date already existed! Please use a unique date.");
+    if (existingEntries.some((entry) => entry.id === id)) {
+      alert("A diary with this Id already existed! Please use a unique Id.");
       return;
     }
 
