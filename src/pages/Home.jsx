@@ -72,8 +72,7 @@ function Home() {
               src={event.image}
               alt={event.title}
               className="w-full h-40 object-cover mt-2" />
-            <p className="text-gray-700">{event.date}</p>
-            <p className="text-gray-700">{event.preview}</p>
+            <p className="text-white">{event.date}</p>
           </div>
         ))}
         

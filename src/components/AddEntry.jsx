@@ -55,7 +55,7 @@ const AddEntryModal = ({ close, onSave }) => {
   
     return (
     <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md">
+      <div className="bg-blue-800 p-6 rounded-lg shadow-lg max-w-md">
         <h2 className="text-2xl font-bold mb-4">Add New Entry</h2>
 
         <input
