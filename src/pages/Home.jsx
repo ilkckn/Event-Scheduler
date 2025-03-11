@@ -68,7 +68,11 @@ function Home() {
             onClick={() => handleCardClick(event.id)}
           >
             <h2 className="text-2xl font-bold">{event.title}</h2>
-            <p className="text-gray-700">{event.date}</p>
+            <img
+              src={event.image}
+              alt={event.title}
+              className="w-full h-40 object-cover mt-2" />
+            <p className="text-white">{event.date}</p>
           </div>
         ))}
         

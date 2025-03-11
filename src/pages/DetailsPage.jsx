@@ -24,8 +24,8 @@ const DetailPage = () => {
   return (
     <div className="max-w-2xl mx-auto p-4">
      <Link to= {`/home/${id}/${name}`} className="text-blue-500 underline">Back to Events</Link>
-      <h2 className="text-center text-2xl font-bold text-[#886300]">{selectedEntry.title}</h2>
-      <p className="text-sm text-[#4d3800]">{new Date(selectedEntry.date).toLocaleDateString()}</p>
+      <h2 className="text-center text-2xl font-bold text-white">{selectedEntry.title}</h2>
+      <p className="text-sm text-white">{new Date(selectedEntry.date).toLocaleDateString()}</p>
       <div className="m-3">
         <img
           className="max-w-full h-auto mx-auto rounded-md border-1 border-[#886300] shadow-md"
@@ -33,7 +33,7 @@ const DetailPage = () => {
           alt={selectedEntry.title}
         />
       </div>
-      <p className="text-justify m-3 text-[#4d3800]">{selectedEntry.content}</p>
+      <p className="text-justify m-3 text-white">{selectedEntry.content}</p>
     </div>
   );
 };
