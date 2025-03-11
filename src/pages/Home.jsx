@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { EventContext } from "../context/EventContext";
-import { Link } from "react-router-dom";  ////for link 
 import AddEntryModal from "../components/AddEntry";
 
 function Home() {
   console.log("Home component rendered");
   const { handleLogout, events } = useContext(EventContext);
   const { id, name } = useParams();
-  //const eventid ="1";   //// test value
   const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState(false);
@@ -25,7 +23,6 @@ function Home() {
     navigate(`/event/${eventId}`);
   };
 
-  // new 
   const handleSave = (newEntry) => {
     const updatedEntries = [...entries, newEntry];
     setEntries(updatedEntries);
@@ -39,56 +36,44 @@ function Home() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold text-center mt-10">Home</h1>
-      <div>
-                
-              </div>
-      {id && name ? (
-        <p className="text-lg mt-4">
-          Welcome, <strong>{name}</strong>!
-        </p>
-      ) : (
-        <p className="text-lg mt-4 text-red-500">No user logged in.</p>
-      )}
-       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto block mt-4"
+    <div className="w-full flex flex-col items-center justify-start py-10">
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded-md mx-auto block mt-4 cursor-pointer"
         onClick={handleOpenModal}
       >
         Add New Event
       </button>
-       {/* Add the modal component here */}
-       {showModal && <AddEntryModal close={handleCloseModal} onSave={handleSave} />}
-      <div className="events-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
-        {events.map((event) => (
+
+      {showModal && (
+        <AddEntryModal close={handleCloseModal} onSave={handleSave} />
+      )}
+
+      <div className="events-grid grid grid-cols-1 flex-wrap md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+        {entries.map((entry) => (
           <div
-            key={event.id}
-            className="event-card p-4 border rounded shadow cursor-pointer"
-            onClick={() => handleCardClick(event.id)}
+            key={entry.id}
+            className="event-card w-[30rem] p-4 border rounded shadow cursor-pointer sm:w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem] bg-blue-950"
+            onClick={() => handleCardClick(entry.id)}
           >
-            <h2 className="text-2xl font-bold">{event.title}</h2>
-            <img
-              src={event.image}
-              alt={event.title}
-              className="w-full h-40 object-cover mt-2" />
-            <p className="text-white">{event.date}</p>
+            <p>
+              <span className="font-medium text-blue-400">ID:</span> {entry.id}
+            </p>
+            <h2 className="text-[1.3rem] text-white font-normal tracking-[1px] capitalize">
+              <span className="font-normal text-blue-400">Title:</span>{" "}
+              {entry.title}
+            </h2>
+            <p className="text-white text-[1rem]">
+              <span className="text-blue-400 text-[1.1rem] font-normal">
+                Entry Date:
+              </span>{" "}
+              {entry.date}
+            </p>
           </div>
         ))}
-        
       </div>
-
-      <button
-        onClick={handleLogout}
-        className="px-[3rem] py-[.5rem] bg-amber-500 rounded cursor-pointer mt-5"
-      >
-        Logout
-      </button>
-      
-
-      
     </div>
-
   );
 }
 

@@ -6,14 +6,10 @@ function SignIn() {
   const {
     handleLoginRegisterToggle,
     handleRegister,
-    user,
+    formData,
     confirmPassword,
     handleChanges,
     handleConfirmPasswordChange,
-    showPassword,
-    togglePasswordVisibility,
-    showConfirmPassword,
-    toggleConfirmPasswordVisibility,
   } = useContext(EventContext);
 
   return (
@@ -45,7 +41,7 @@ function SignIn() {
             </label>
             <input
               type="email"
-              value={user.email || ""}
+              value={formData.email || ""}
               onChange={handleChanges}
               placeholder="Enter your e-mail"
               id="email"
@@ -77,9 +73,9 @@ function SignIn() {
             </label>
             <input
               type="text"
-              value={user.name || ""}
+              value={formData.name || ""}
               onChange={handleChanges}
-              placeholder="Enter your e-mail"
+              placeholder="Enter your name"
               id="name"
               className="w-full h-[3rem] text-white font-extralight border border-white rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
             />
@@ -109,7 +105,7 @@ function SignIn() {
             </label>
             <input
               type="password"
-              value={user.password || ""}
+              value={formData.password || ""}
               onChange={handleChanges}
               placeholder="Enter your password"
               id="password"

@@ -3,7 +3,7 @@ import { EventContext } from "../context/EventContext";
 import { useContext } from "react";
 
 function Login() {
-  const { handleLoginRegisterToggle, handleLogin, user, handleChanges } =
+  const { handleLoginRegisterToggle, handleLogin, formData, handleChanges } =
     useContext(EventContext);
 
   return (
@@ -41,7 +41,7 @@ function Login() {
               type="email"
               placeholder="Enter your e-mail"
               id="email"
-              value={user.email || ""}
+              value={formData.email || ""}
               onChange={handleChanges}
               className="w-full h-[3rem] text-white border border-white rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
             />
@@ -62,38 +62,6 @@ function Login() {
               </svg>
             </div>
           </div>
-          {/* <div className="name w-full flex flex-col gap-[5px]">
-            <label
-              htmlFor="name"
-              className="text-blue-300 font-medium tracking-[.5px] pl-4"
-            >
-              Name:
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your e-mail"
-              id="name"
-              value={user.name || ""}
-              onChange={handleChanges}
-              className="w-full h-[3rem] text-white border border-blue-300 rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
-            />
-            <div className="email-icon absolute top-[2.7rem] left-5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-5 text-blue-300"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                />
-              </svg>
-            </div>
-          </div> */}
           <div className="password w-full flex flex-col gap-[5px]">
             <label
               htmlFor="password"
@@ -106,7 +74,7 @@ function Login() {
               placeholder="Enter your password"
               id="password"
               autoComplete="current-password"
-              value={user.password || ""}
+              value={formData.password || ""}
               onChange={handleChanges}
               className="w-full h-[3rem] text-white border border-white rounded-[30px] p-2 px-12 focus:outline focus:outline-blue-500"
             />

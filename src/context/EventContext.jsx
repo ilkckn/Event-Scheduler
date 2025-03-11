@@ -5,7 +5,8 @@ export const EventContext = createContext();
 
 function EventContextProvider({ children }) {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
+  const [user, setUser] = useState({}); 
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
@@ -29,17 +30,14 @@ function EventContextProvider({ children }) {
     userAPI();
   }, []);
 
-  useEffect(() => { 
+  useEffect(() => {
     const storedEvents = JSON.parse(localStorage.getItem("diaryEntries")) || [];
-    setEvents(storedEvents);    
+    setEvents(storedEvents);
   }, []);
 
-
-
-
   const handleChanges = (e) => {
-    setUser((prevUser) => ({
-      ...prevUser,
+    setFormData((prevData) => ({
+      ...prevData,
       [e.target.id]: e.target.value,
     }));
   };
@@ -50,49 +48,49 @@ function EventContextProvider({ children }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const loggedInUser = users.find((data) => data.email === user.email);
+    const loggedInUser = users.find((data) => data.email === formData.email);
 
     if (loggedInUser) {
       console.log(loggedInUser);
       setUser(loggedInUser);
-      localStorage.setItem("user", JSON.stringify(loggedInUser));
-  
+      localStorage.setItem("user", JSON.stringify(loggedInUser)); 
+
       if (loggedInUser.id && loggedInUser.name) {
         navigate(`/home/${loggedInUser.id}/${loggedInUser.name}`);
       } else {
         console.error("Invalid user data: missing id or name");
-        alert("Invalid user data: missing id or name"); 
+        alert("Invalid user data: missing id or name");
       }
     } else {
       console.log("Login failed!");
-      alert("Login failed! User not found."); 
+      alert("Login failed! User not found.");
     }
   };
 
   const handleLogout = () => {
     setUser({});
-    localStorage.removeItem("user");
+    localStorage.removeItem("user"); 
     navigate("/login");
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser && storedUser.email === user.email) {
+    if (storedUser && storedUser.email === formData.email) {
       alert("User with this email already exists!");
       return;
     }
-    if (user.password === confirmPassword) {
+    if (formData.password === confirmPassword) {
       const newUser = {
-        email: user.email,
-        password: user.password,
-        name: user.name,
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
         id: Date.now(),
       };
-      setUsers([...users, newUser]);
-      setUser(newUser);
-      localStorage.setItem("user", JSON.stringify(newUser));
-      navigate("/login");
+      setUsers([...users, newUser]); 
+      setFormData({ email: "", password: "", name: "" }); 
+      setConfirmPassword(""); 
+      navigate("/login"); 
     } else {
       alert("Passwords do not match!");
     }
@@ -121,6 +119,7 @@ function EventContextProvider({ children }) {
         user,
         users,
         events,
+        formData, 
       }}
     >
       {children}
